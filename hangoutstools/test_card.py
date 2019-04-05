@@ -273,3 +273,41 @@ def test_key_value_with_button_widget():
 }""")
 
     assert expected == json.loads(card.toJson())
+
+def test_add_header():
+    card_name = 'testcard'
+    card = Card(card_name)
+    card.title = "Test Header"
+    card.subtitle = "a subtitle"
+    card.imageUrl = "https://example.com/image.jpg"
+
+    expected = json.loads("""
+{
+    "card": {
+        "sections": [],
+        "header": {
+            "title": "Test Header",
+            "imageStyle": "IMAGE",
+            "subtitle": "a subtitle",
+            "imageUrl": "https://example.com/image.jpg"
+        }
+    }
+}""")
+
+    assert expected == json.loads(card.toJson())
+
+def test_add_basic_header():
+    card_name = 'testcard'
+    card = Card(card_name)
+    card.title = "Test Header"
+    expected = json.loads("""
+{
+    "card": {
+        "sections": [],
+        "header": {
+            "title": "Test Header"
+        }
+    }
+}""")
+
+    assert expected == json.loads(card.toJson())

@@ -9,4 +9,4 @@ pipeline:
     privileged: true
     commands:
     - pip install . pytest
-    - pytest
+    - pytest -v

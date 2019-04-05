@@ -3,6 +3,12 @@ import validators
 import json
 
 class Card:
+    header_elements = [
+        'title',
+        'subtitle',
+        'imageUrl',
+        'imageStyle',
+    ]
     def __init__(self, name):
         self.name = name
         self.card_object = OrderedDict()
@@ -10,6 +16,34 @@ class Card:
         self.card_object['card'] = self.card
         self.card['sections'] = []
         self.sections = {}
+
+    def _updateHeader(self):
+        if 'header' not in self.card:
+            self.card['header'] = {}
+        if 'subtitle' in self.__dict__ and self.subtitle:
+            self.card['header']['subtitle'] = self.subtitle
+        else:
+            self.card['header'].pop('subtitle', None)
+
+        if 'title' in self.__dict__ and self.title:
+            self.card['header']['title'] = self.title
+        else:
+            self.card['header'].pop('title', None)
+
+        if 'imageUrl' in self.__dict__ and self.imageUrl and validators.url(self.imageUrl):
+            self.card['header']['imageUrl'] = self.imageUrl
+            if 'imageStyle' not in self.__dict__ or not self.imageStyle:
+                self.imageStyle = 'IMAGE'
+            self.card['header']['imageStyle'] = self.imageStyle
+        else:
+            self.card['header'].pop('imageStyle', None)
+            self.card['header'].pop('imageUrl', None)
+
+    def __setattr__(self, name, value):
+        self.__dict__[name] = value
+
+        if name in self.header_elements:
+            self._updateHeader()
 
     def addSection(self, section, before=None, after=None):
         self.sections[section.name] = section
