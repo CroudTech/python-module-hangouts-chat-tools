@@ -17,7 +17,7 @@ if (3, 1) <= sys.version_info < (3, 4):
     sys.exit(1)
 
 install_requires = [
-    #'httplib2>=0.9.1',
+    'validators>=0.12.4',
 ]
 
 long_desc = """
