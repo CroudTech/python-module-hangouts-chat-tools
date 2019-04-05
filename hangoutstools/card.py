@@ -82,8 +82,7 @@ class Card:
 
 
 class CardSection(OrderedDict):
-    def __init__(self, name, dict={}):
-        self.__dict__ = dict
+    def __init__(self, name):
         self.name = name
         self.widgets = {}
         self['widgets'] = []
@@ -122,9 +121,8 @@ class CardSection(OrderedDict):
         return self.pop(name, None)
 
 class CardWidget(OrderedDict):
-    def __init__(self, name, dict={}):
+    def __init__(self, name):
         self.name = name
-        self.__dict__ = dict
 
 class CardImageWidget(CardWidget):
     def __init__(self, name, image, link=None):
