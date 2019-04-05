@@ -33,7 +33,7 @@ setup(
     long_description=long_desc,
     author='Croud Ltd',
     author_email='jscrobinson@gmail.com',
-    url='http://github.com/CroudTech/python-module-hangouts-chat/',
+    url='http://github.com/CroudTech/python-module-hangouts-chat-tools/',
     install_requires=install_requires,
     packages=find_packages(exclude=('tests*',)),
     license='Apache 2.0',

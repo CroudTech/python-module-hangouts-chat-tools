@@ -1,0 +1,12 @@
+clone:
+  git:
+    image: plugins/git
+    tags: true
+pipeline:
+  test:
+    image: python:3
+    pull: true
+    privileged: true
+    commands:
+    - pip install .
+    - pytest
