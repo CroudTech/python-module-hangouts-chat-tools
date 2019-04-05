@@ -14,7 +14,6 @@ def test_card_name():
     card = Card(card_name)
     assert card.name == card_name
 
-
 def test_to_json():
     card_name = 'testcard'
     card = Card(card_name)
@@ -27,7 +26,7 @@ def test_to_json():
     section.addWidget(widget)
     expected = json.loads("""
     {
-    "card": {
+    "cards": {
         "sections": [
             {
                 "widgets": [
@@ -58,7 +57,7 @@ def test_to_json():
     section.getWidgetByName('testimagewidget').updateImage('https://picsum.photos/300')
     expected = json.loads("""
 {
-    "card": {
+    "cards": {
         "sections": [
             {
                 "widgets": [
@@ -89,7 +88,7 @@ def test_to_json():
     section.addWidget(widget, after='testimagewidget')
     expected = json.loads("""
 {
-    "card": {
+    "cards": {
         "sections": [
             {
                 "widgets": [
@@ -125,7 +124,7 @@ def test_to_json():
     section.addWidget(widget, before='testimagewidget')
     expected = json.loads("""
 {
-    "card": {
+    "cards": {
         "sections": [
             {
                 "widgets": [
@@ -171,7 +170,7 @@ def test_button_widget():
     section.addWidget(widget)
     expected = json.loads("""
 {
-    "card": {
+    "cards": {
         "sections": [
             {
                 "widgets": [
@@ -203,7 +202,7 @@ def test_key_value_widget():
 
     expected = json.loads("""
 {
-    "card": {
+    "cards": {
         "sections": [
             {
                 "widgets": [
@@ -239,7 +238,7 @@ def test_key_value_with_button_widget():
 
     expected = json.loads("""
 {
-    "card": {
+    "cards": {
         "sections": [
             {
                 "widgets": [
@@ -283,7 +282,7 @@ def test_add_header():
 
     expected = json.loads("""
 {
-    "card": {
+    "cards": {
         "sections": [],
         "header": {
             "title": "Test Header",
@@ -302,7 +301,7 @@ def test_add_basic_header():
     card.title = "Test Header"
     expected = json.loads("""
 {
-    "card": {
+    "cards": {
         "sections": [],
         "header": {
             "title": "Test Header"

@@ -15,7 +15,7 @@ class Card:
         self.card = OrderedDict()
         self.card_object['cards'] = self.card
         self.card['sections'] = []
-        self.sections = {}
+        self.sections = OrderedDict()
 
     def _updateHeader(self):
         if 'header' not in self.card:
@@ -56,7 +56,7 @@ class Card:
             d1 = OrderedDict((key, self.sections[key]) for key in self.sections if key in k1)
             d2 = OrderedDict((key, self.sections[key]) for key in self.sections if key in k2)
             d2[section.name] = section
-            self.sections = {**d2, **d1}
+            self.sections = OrderedDict({**d2, **d1})
         elif after != None and after in self.sections:
             keys = list(self.sections.keys())
             index = keys.index(after)
@@ -65,7 +65,7 @@ class Card:
             d1 = OrderedDict((key, self.sections[key]) for key in self.sections if key in k1)
             d2 = OrderedDict((key, self.sections[key]) for key in self.sections if key in k2)
             d2[section.name] = section
-            self.sections = {**d2, **d1}
+            self.sections = OrderedDict({**d2, **d1})
         else:
             self.sections[section.name] = section
         self._updateSections()
