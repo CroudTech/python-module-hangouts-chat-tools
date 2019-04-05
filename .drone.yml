@@ -8,5 +8,5 @@ pipeline:
     pull: true
     privileged: true
     commands:
-    - pip install .
+    - pip install . pytest
     - pytest
