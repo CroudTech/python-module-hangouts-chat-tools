@@ -13,7 +13,7 @@ class Card:
         self.name = name
         self.card_object = OrderedDict()
         self.card = OrderedDict()
-        self.card_object['card'] = self.card
+        self.card_object['cards'] = self.card
         self.card['sections'] = []
         self.sections = {}
 
