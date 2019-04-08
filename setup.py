@@ -18,6 +18,8 @@ if (3, 1) <= sys.version_info < (3, 4):
 
 install_requires = [
     'validators>=0.12.4',
+    'google-api-python-client>=1.7.8',
+    'google-cloud-pubsub>=0.40.0',
 ]
 
 long_desc = """
