@@ -84,7 +84,7 @@ class Card:
 class CardSection(OrderedDict):
     def __init__(self, name):
         self.name = name
-        self.widgets = {}
+        self.widgets = OrderedDict()
         self['widgets'] = []
 
     def addWidget(self, widget, before=None, after=None):
@@ -194,6 +194,10 @@ class KeyValueWidget(CardWidget):
 
         if self.button:
             self.key_value["button"] = self.button
+class CardButtons(CardWidget):
+    def __init__(self, name, buttons = []):
+        self.name = name
+        self['buttons'] = buttons
 
 class CardButtonWidget(CardWidget):
     def __init__(self, name, link, content, button_type="imageButton"):
@@ -223,7 +227,7 @@ class CardButtonWidget(CardWidget):
         self._updateWidget()
 
     def _updateWidget(self):
-        if self.button_type == "ImageButton":
+        if self.button_type == "imageButton":
             if validators.url(self.content):
                 self.button['iconUrl'] = self.content
                 self.pop('icon', None)

@@ -14,15 +14,15 @@ CREDENTIALS_PATH_ENV_PROPERTY='GOOGLE_APPLICATION_CREDENTIALS'
 class HangoutsBot:
     def __init__(self, project_id=None, subscription_name=None):
         self.logger = logger = logging.getLogger()
-        self.logger.info("Initialised bot")
+        self.logger.debug("Initialised bot")
         self.subscription_name = os.getenv('CROUDBOT_SUBSCRIPTION_NAME', None) if subscription_name == None else subscription_name
         if self.subscription_name == None:
             raise Exception('CroudBot Subscription Name is not set')
-        self.logger.info("Bot using Subscription Name '{}'".format(self.subscription_name))
+        self.logger.debug("Bot using Subscription Name '{}'".format(self.subscription_name))
         self.project_id = os.getenv('CROUDBOT_PROJECT_ID', None) if project_id == None else project_id
         if self.project_id == None:
             raise Exception('CroudBot Project Id is not set')
-        self.logger.info("Bot using Project ID '{}'".format(self.project_id))
+        self.logger.debug("Bot using Project ID '{}'".format(self.project_id))
 
     def listen(self, callback=None):
         if callback == None:
@@ -32,7 +32,7 @@ class HangoutsBot:
             self.project_id, self.subscription_name)
         subscriber.subscribe(subscription_path, callback=callback)
 
-        self.logger.info('Listening for messages on {}'.format(subscription_path))
+        self.logger.debug('Listening for messages on {}'.format(subscription_path))
         while True:
             time.sleep(60)
 
@@ -108,7 +108,7 @@ class HangoutsBot:
     def getSpaceByName(self, name):
         spaces = self.chat().spaces().list().execute()
         for space in spaces['spaces']:
-            if space['displayName'] == self.space_name:
+            if space['displayName'] == name:
                 space_object = space
                 return space_object
 
