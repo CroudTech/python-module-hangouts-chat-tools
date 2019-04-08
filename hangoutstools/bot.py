@@ -67,7 +67,7 @@ class HangoutsBot:
             http_auth = credentials.authorize(Http())
             self.chat_object = build('chat', 'v1', http=http_auth, cache_discovery=False)
 
-        return self.chat_objects
+        return self.chat_object
 
     def sendMessage(self, response, space_name, thread_key=None):
         scopes = ['https://www.googleapis.com/auth/chat.bot']
