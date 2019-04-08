@@ -96,3 +96,12 @@ class HangoutsBot:
 
         return response
 
+    def getSpaceByName(self, name):
+        spaces = self.chat().spaces().list().execute()
+        for space in spaces['spaces']:
+            if space['displayName'] == self.space_name:
+                space_object = space
+                return space_object
+
+        return None
+

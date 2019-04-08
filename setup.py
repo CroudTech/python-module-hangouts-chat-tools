@@ -20,6 +20,7 @@ install_requires = [
     'validators>=0.12.4',
     'google-api-python-client>=1.7.8',
     'google-cloud-pubsub>=0.40.0',
+    'oauth2client>=4.1.3',
 ]
 
 long_desc = """
