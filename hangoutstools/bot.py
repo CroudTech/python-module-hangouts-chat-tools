@@ -59,14 +59,18 @@ class HangoutsBot:
         self.sendMessage(response, space_name, thread_key)
         message.ack()
 
+    def chat(self):
+        if not hasattr(self, 'chat_object'):
+            self.chat_object = build('chat', 'v1', http=http_auth, cache_discovery=False)
+        return chat_object
+
     def sendMessage(self, response, space_name, thread_key=None):
         scopes = ['https://www.googleapis.com/auth/chat.bot']
         credentials = ServiceAccountCredentials.from_json_keyfile_name(
             os.environ[CREDENTIALS_PATH_ENV_PROPERTY], scopes)
         http_auth = credentials.authorize(Http())
 
-        chat = build('chat', 'v1', http=http_auth, cache_discovery=False)
-        chat.spaces().messages().create(
+        self.chat().spaces().messages().create(
             parent=space_name,
             body=response,
             threadKey=thread_key).execute()

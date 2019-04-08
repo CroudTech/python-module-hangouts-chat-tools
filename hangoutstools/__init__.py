@@ -1,4 +1,4 @@
 """Library that provides Google Hangouts Chat tools"""
 
-__version__ = '0.0.8'
+__version__ = '0.0.9'
 
